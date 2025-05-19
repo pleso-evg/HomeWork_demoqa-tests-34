@@ -10,16 +10,18 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class PracticeFormTest {
     @BeforeAll
-    static void beforeall() {
+    static void setup() {
         Configuration.browserSize = "1920x1080";
         Configuration.pageLoadStrategy = "eager";
         Configuration.baseUrl = "https://demoqa.com";
     }
 
     @Test
-    void FormTest() {
+    void formTest() {
 
         open("/automation-practice-form");
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
         $("#firstName").setValue("Frank");
         $("#lastName").setValue("Test");
         $("#userEmail").setValue("franktest@test.com");
@@ -51,5 +53,8 @@ public class PracticeFormTest {
         $(".table-responsive").$(byText("Picture")).parent().shouldHave(text("img.jpg"));
         $(".table-responsive").$(byText("Address")).parent().shouldHave(text("Ufa"));
         $(".table-responsive").$(byText("State and City")).parent().shouldHave(text("Uttar Pradesh Merrut"));
+    }
+
+    private void executeJavaScript(String s) {
     }
 }
