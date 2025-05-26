@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class PracticeFormTest {
     @BeforeAll
@@ -53,8 +52,5 @@ public class PracticeFormTest {
         $(".table-responsive").$(byText("Picture")).parent().shouldHave(text("img.jpg"));
         $(".table-responsive").$(byText("Address")).parent().shouldHave(text("Ufa"));
         $(".table-responsive").$(byText("State and City")).parent().shouldHave(text("Uttar Pradesh Merrut"));
-    }
-
-    private void executeJavaScript(String s) {
     }
 }
